@@ -70,7 +70,7 @@ export default function Plan(){
                   
                   buttonStyle='btn--primary'
                   buttonSize='btn--large'
-                >Book Flight and Hotel! </Button></div>
+                >Book Flight and Hotel! ${flight&&flight.Price} + $100 </Button></div>
 <div className="row">
 {/*certain height but overflow or no comments yet */}
 <div className="col-lg-8">
