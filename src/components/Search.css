@@ -79,17 +79,16 @@ html,body
     cursor:pointer;
 }
 
-.card-container{
+.card-search-container{
     width:100%;
     display:flex;
     height:100vh;
     justify-content: center;
 }
 
-.card {
+.card-search {
     border-radius: 18px;
     background: white;
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
     font-family: roboto;
     text-align: center;
     transition: 0.5s ease;
@@ -99,7 +98,7 @@ html,body
     height:484px;
   }
 
-  .card-image {
+  .card-search-image {
     height:200px;
     background: url("https://www.gohawaii.com/sites/default/files/styles/wide_carousel_large/public/content-carousel-images/10105_mauiregionslp_VideoThumbnail.jpg?itok=vzKj-jK9");
     border-top-left-radius: 15px;
@@ -107,11 +106,11 @@ html,body
     background-size: cover;
   }
 
-  .card-text {
+  .card-search-text {
     grid-area: text;
   }
 
-  .card-stats {
+  .card-search-stats {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr;
@@ -119,31 +118,31 @@ html,body
     border-bottom-right-radius: 15px;
     background: black;
   }
-  .card-text {
+  .card-search-text {
     margin: 25px;
     height:167px;
   }
-  .card-text .date {
+  .card-search-text .date {
     color: rgb(255, 7, 110);
     font-size:13px;
   }
-  .card-text p {
+  .card-search-text p {
     color: grey;
     font-size:15px;
     font-weight: 300;
   }
-  .card-text h2 {
+  .card-search-text h2 {
     margin-top:0px;
     font-size:28px;
   }
 
-  .card-text div{
+  .card-search-text div{
       font-family: serif;
       width:100%;
       text-align: left;
   }
 
-  .card-stats .stat {
+  .card-search-stats .stat {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,7 +151,6 @@ html,body
     padding:10px;
   }
 
-  .card:hover {
+  .card-search:hover {
     transform: scale(1.15);
-    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
   }

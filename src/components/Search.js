@@ -88,7 +88,7 @@ export default function Search(){
                     })()
                 }
             </div>
-            <div className="card-container">
+            <div className="card-search-container">
                 {
                     (()=>{
                         let arr = [];
@@ -97,13 +97,13 @@ export default function Search(){
                             if(obj == undefined){
                                 break;
                             }
-                            arr.push(<div className="card" onClick={
+                            arr.push(<div className="card-search" onClick={
                                 ()=>{
                                     window.location.href="http://localhost:3000/plan/"+obj.id
                                 }
                             }>
-                            <div class="card-image"></div>
-                            <div class="card-text">
+                            <div class="card-search-image"></div>
+                            <div class="card-search-text">
                                 <span>from {obj.origin}</span>
                                 <h2>{obj.city.toUpperCase()}</h2>
                                 <div><span>Departure: </span> {obj.departure.substring(5,10)}-{obj.departure.substring(0,4)}</div>
@@ -111,7 +111,7 @@ export default function Search(){
                                 <div><span>Hotels: </span> {obj.hotel}</div>
                                 <div><span>Transportation: </span> {obj.transportation}</div>
                             </div>
-                            <div class="card-stats">
+                            <div class="card-search-stats">
                                 <div class="stat">
                                 <div class="value">{obj.length}</div>
                                 <div class="type">days</div>

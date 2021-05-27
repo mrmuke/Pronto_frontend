@@ -64,10 +64,10 @@ function Footer() {
         <div class='social-media-wrap'>
           <div class='footer-logo'>
             <Link to='/' className='social-logo'>
-              Envisage
+              Pronto
             </Link>
           </div>
-          <small class='website-rights'>Lightspeed © 2020</small>
+          <small class='website-rights'>Pronto © 2020</small>
           <div class='social-icons'>
             <Link
               class='social-icon-link facebook'
