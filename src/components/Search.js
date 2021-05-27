@@ -44,7 +44,7 @@ export default function Search(){
     }
 
     return(
-        <div style={{position:"relative"}}>
+        <div style={{position:"relative", paddingTop:"50px", backgroundImage:'url("https://wallpaperaccess.com/full/2028728.jpg")', backgroundSize:'cover', height:"850px"}}>
             <div className="search-container">
                 <div className="searchbar-container">
                     <input className="searchbar" type="text" value={search} onChange={(e)=>{

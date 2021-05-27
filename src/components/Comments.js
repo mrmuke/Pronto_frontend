@@ -3,7 +3,8 @@ import random from "random-name"
 import './Comments.css'
 export default function Comments({plan}){
     const [comment, setComment] = useState("");
-    const [rating, setRating] = useState(5);
+    const [rating, setRating] = useState(10);
+    const [mouse, setMouse] = useState(0);
     const [reviews, setReviews] = useState([]);
 
     useEffect(()=>{
@@ -69,7 +70,50 @@ export default function Comments({plan}){
                   </div>
         <div className="container justify-content-center" style={{width:'100%',border:'3px solid #ccc'}}>
         <div className="d-flex justify-content-center pt-3 pb-2"> <input type="text" name="text" placeholder="+ Add a comment" className="form-control addtxt" value={comment} onChange={e => setComment(e.target.value)}/> </div>
-        <div className="d-flex justify-content-center pt-3 pb-2"> <input type="number" name="text" placeholder="Choose a rating" className="form-control addtxt" value={rating} onChange={e => setRating(e.target.value)}/> </div>
+        <div className="d-flex justify-content-center pt-3 pb-2">
+            {
+                (()=>{
+                    let arr = [];
+                    for(let i = 0; i < 10; i++){
+                        let shade = rating;
+                        if(mouse != 0){
+                            shade = mouse;
+                        }
+                        if(i <= shade-1){
+                            arr.push(<i style={{color:'gold', fontSize:"20px", margin:"0px 5px", cursor:'pointer'}} className="fa fa-star" onClick={
+                                ()=>{
+                                    setRating(i+1);
+                                }
+                            } onMouseOver={
+                                ()=>{
+                                    setMouse(i+1);
+                                }
+                            } onMouseOut={
+                                ()=>{
+                                    setMouse(0);
+                                }
+                            }></i>)
+                        } else {
+                            arr.push(<i style={{color:'white', fontSize:"20px", margin:"0px 5px", cursor:'pointer'}} className="fa fa-star" onClick={
+                                ()=>{
+                                    setRating(i+1);
+                                }
+                            } onMouseOver={
+                                ()=>{
+                                    setMouse(i+1);
+                                }
+                            } onMouseOut={
+                                ()=>{
+                                    setMouse(0);
+                                }
+                            }></i>)
+                        }
+                    }
+                    console.log(arr)
+                    return arr
+                })()
+            }
+        </div>
         <div className="d-flex justify-content-center pt-3 pb-2"> <input type="button" name="button" className="form-control addtxt" value="Submit Comment" onClick={()=>{submitComment()}}/> </div>
         {
             (()=>{
