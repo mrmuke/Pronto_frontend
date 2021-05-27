@@ -76,7 +76,8 @@ details[open] summary ~ * {
 }
 @media screen and (max-width:500px){
 	.todo-cmp{
-		display: none
+		visibility: hidden;
+		position:absolute
 	}
 	.schedule-map-container{
 		padding:0px;
@@ -137,7 +138,7 @@ details[open] summary ~ * {
 	 width: 13px;
 	 position: absolute;
 	 right: 0;
-	 top: 1px;
+	 top: 4px;
 	 z-index: 10;
 	 transition: all 550ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 	 transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);

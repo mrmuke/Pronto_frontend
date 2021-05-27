@@ -12,7 +12,7 @@ const AppMap = compose(
   withProps(props=>({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyAPOOnlu8YXdWsyM3uUkz3tU7AeDWgoQqA&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: ""+(104+props.places.length*71)+"px",border:'2px solid #ccc' }} />,
+    containerElement: <div style={{ height: props.height+"px"/* ""+(104+props.places.length*71)+"px" */,border:'2px solid #ccc' ,width:'100%'}} />,
     mapElement: <div style={{ height: `100%` }} />,
   })),
   withScriptjs,
