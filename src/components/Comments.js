@@ -1,6 +1,52 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import random from "random-name"
 import './Comments.css'
 export default function Comments({plan}){
+    const [comment, setComment] = useState("");
+    const [rating, setRating] = useState(5);
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(()=>{
+        getComment();
+    }, [])
+
+    useEffect(()=>{
+        console.log(reviews);
+    }, [reviews])
+    
+    function submitComment(){
+        let name = random.first() + " " + random.last();
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function(){
+            if(request.readyState == 4 && request.status == 200){
+                setReviews([{"name":name, "comment":comment, "rating": rating},...reviews]);
+                setComment("");
+            }
+        }
+        request.open("POST", "http://localhost:8000/api/plan/submitComment");
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify({
+            name:name,
+            comment: comment,
+            rating: rating,
+            id:plan.id,
+        }))
+    }
+
+    function getComment(){
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function(){
+            if(request.readyState == 4 && request.status == 200){
+                setReviews(JSON.parse(request.response)["reviews"]);
+            }
+        }
+        request.open("POST", "http://localhost:8000/api/plan/getComments");
+        request.setRequestHeader("Content-Type", "application/json");
+        request.send(JSON.stringify({
+            id:plan.id,
+        }))
+    }
+
     return (
         <div style={{height:'100%'}}><div style={{color:'white'}}>
 
@@ -22,39 +68,33 @@ export default function Comments({plan}){
       
                   </div>
         <div className="container justify-content-center" style={{width:'100%',border:'3px solid #ccc'}}>
-        <div className="d-flex justify-content-center pt-3 pb-2"> <input type="text" name="text" placeholder="+ Add a note" className="form-control addtxt"/> </div>
-        <div className="py-2">
-            <div className="second py-2 px-2"> <span className="text1">Type your note, and hit enter to add it</span>
-                <div className="d-flex justify-content-between py-1 pt-2">
-                    <div><span className="text2">Martha</span></div>
-                    <div><span className="text3">Upvote?</span><span className="thumbup"><i className="fa fa-thumbs-o-up"></i></span><span className="text4">3</span></div>
-                </div>
-            </div>
-        </div>
-        <div className="py-2">
-            <div className="second py-2 px-2"> <span className="text1">Type your note, and hit enter to add it</span>
-                <div className="d-flex justify-content-between py-1 pt-2">
-                    <div><span className="text2">Curtis</span></div>
-                    <div><span className="text3">Upvote?</span><span className="thumbup"><i className="fa fa-thumbs-o-up"></i></span><span className="text4">3</span></div>
-                </div>
-            </div>
-        </div>
-        <div className="py-2">
-            <div className="second py-2 px-2"> <span className="text1">Type your note, and hit enter to add it</span>
-                <div className="d-flex justify-content-between py-1 pt-2">
-                    <div><span className="text2">Beth</span></div>
-                    <div><span className="text3 text3o">Upvoted</span><span className="thumbup"><i className="fa fa-thumbs-up thumbupo"></i></span><span className="text4 text4i">1</span></div>
-                </div>
-            </div>
-        </div>
-        <div className="py-2 pb-3">
-            <div className="second py-2 px-2"> <span className="text1">Type your note, and hit enter to add it</span>
-                <div className="d-flex justify-content-between py-1 pt-2">
-                    <div><span className="text2">Curtis</span></div>
-                    <div><span className="text3">Upvote?</span><span className="thumbup"><i className="fa fa-thumbs-o-up"></i></span><span className="text4 text4o">1</span></div>
-                </div>
-            </div>
-        </div>
+        <div className="d-flex justify-content-center pt-3 pb-2"> <input type="text" name="text" placeholder="+ Add a comment" className="form-control addtxt" value={comment} onChange={e => setComment(e.target.value)}/> </div>
+        <div className="d-flex justify-content-center pt-3 pb-2"> <input type="number" name="text" placeholder="Choose a rating" className="form-control addtxt" value={rating} onChange={e => setRating(e.target.value)}/> </div>
+        <div className="d-flex justify-content-center pt-3 pb-2"> <input type="button" name="button" className="form-control addtxt" value="Submit Comment" onClick={()=>{submitComment()}}/> </div>
+        {
+            (()=>{
+                let item = [];
+                if(reviews.length != 0){
+                    for(let i = 0; i < reviews.length; i++){
+                        item.push(
+                            <div className="py-2">
+                                <div className="second py-2 px-2"> <span className="text1">{reviews[i]["comment"]}</span>
+                                    <div className="d-flex justify-content-between py-1 pt-2">
+                                        <div><span className="text2">{reviews[i]["name"]}</span></div>
+                                        <div><span className="text3">Rating</span><span className="thumbup"><i className="fa fa-thumbs-o-up"></i></span><span className="text4">{reviews[i]["rating"]}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    }
+                } else {
+                    item.push(<p style={{color:'white'}}>No Comments Yet!</p>)
+                }
+
+
+                return item
+            })()
+        }
     </div></div>
     )
 }

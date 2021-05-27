@@ -69,7 +69,6 @@ export default function Plan(){
 <div className="col-lg-4">
 <Comments plan={plan}/></div>{/*  get flight when page loads and balance length with price, schedule info- length of trip, etc */}
 </div>
-              
               </div>
     )
 }

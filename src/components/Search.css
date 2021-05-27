@@ -1,0 +1,158 @@
+html,body
+{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+.searchbar{
+    width:100%;
+    height:40px;
+    border-radius: 2vw;
+    padding-left:30px;
+    padding-right:30px;
+}
+
+.searchbar:focus{
+    outline:none;
+}
+
+.search-container{
+    width:100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-container:first-child{
+    margin-top:50px;
+    display:flex;
+}
+
+.search-container:nth-child(2){
+    position:absolute;
+    z-index: 100;
+}
+
+.searchbar-container{
+    width:50%;
+    position:relative;
+}
+
+.search-button{
+    position:absolute;
+    left:95%;
+    padding: 10px;
+    top:-10%;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.search-button i{
+    font-size:20px;
+    color:white;
+    border:none;
+}
+
+.autocomplete{
+    width:46%;
+    margin:auto;
+    padding-left:11px;
+    border-left:2px solid black;
+    border-right:2px solid black;
+}
+
+.autocomplete:last-child{
+    border-bottom:2px solid black;
+}
+
+.autocomplete:nth-child(odd){
+    background-color: rgb(228, 228, 228);
+}
+
+.autocomplete:nth-child(even){
+    background-color: white;
+}
+
+.autocomplete:hover{
+    background-color: rgb(168, 168, 168);
+    cursor:pointer;
+}
+
+.card-container{
+    width:100%;
+    display:flex;
+    height:100vh;
+    justify-content: center;
+}
+
+.card {
+    border-radius: 18px;
+    background: white;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+    font-family: roboto;
+    text-align: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin:30px 30px 30px 30px;
+    width:300px;
+    height:484px;
+  }
+
+  .card-image {
+    height:200px;
+    background: url("https://www.gohawaii.com/sites/default/files/styles/wide_carousel_large/public/content-carousel-images/10105_mauiregionslp_VideoThumbnail.jpg?itok=vzKj-jK9");
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-size: cover;
+  }
+
+  .card-text {
+    grid-area: text;
+  }
+
+  .card-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: black;
+  }
+  .card-text {
+    margin: 25px;
+    height:167px;
+  }
+  .card-text .date {
+    color: rgb(255, 7, 110);
+    font-size:13px;
+  }
+  .card-text p {
+    color: grey;
+    font-size:15px;
+    font-weight: 300;
+  }
+  .card-text h2 {
+    margin-top:0px;
+    font-size:28px;
+  }
+
+  .card-text div{
+      font-family: serif;
+      width:100%;
+      text-align: left;
+  }
+
+  .card-stats .stat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    padding:10px;
+  }
+
+  .card:hover {
+    transform: scale(1.15);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.6);
+  }
